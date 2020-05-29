@@ -14,7 +14,7 @@ Prostopadloscian(){};
 Prostopadloscian(double _x, double _y, double _z);
 
  /*int zmaz() override; */
- int rysuj() override;
+ void rysuj() override;
 
  void wspolrzedne_gl(Wektor3D tab[]) const;
 

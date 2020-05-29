@@ -6,10 +6,9 @@
 
 class Dno: public Plaszczyzna{
 
-  public:
+public:
 
-  Dno();  
-
+  Dno(){PozycjaSr={0,0,-100};}; 
 
 };
 

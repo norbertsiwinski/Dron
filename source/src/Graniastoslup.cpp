@@ -47,7 +47,7 @@ tab[11] =PozycjaSr + Orientacja *srodek_gran +OrY2-OrX-OrX-OrX2-OrZ- OrZ;
 }
 
 
-int Graniastoslup::rysuj() 
+void Graniastoslup::rysuj() 
 {
  Wektor3D tab[12];
 (*this).wspolrzedne_gl(tab);
@@ -61,7 +61,6 @@ id = api->draw_polyhedron(vector<vector<Point3D> > {{
     drawNS::Point3D(tab[9][0],tab[9][1],tab[9][2]), drawNS::Point3D(tab[10][0],tab[10][1],tab[10][2]), drawNS::Point3D(tab[11][0],tab[11][1],tab[11][2])
 	  }},"green");
     
-    return id;
 
 }
 

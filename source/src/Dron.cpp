@@ -44,10 +44,8 @@ void Dron::ani_obroc_X(double kat){
 for(int i=0;i<kat;i++){
 rysuj();
 obroc_X(i);
-
-if(i+1<kat) 
-api->erase_shape(id); 
 }
+
 }
 
 
@@ -68,13 +66,12 @@ rysuj();
 }
 }
 
+
 void Dron::obroc_Z(double kat)
      {
 MacierzOb Obrot(kat,'z');
 Orientacja=Orientacja*Obrot;
 
-Lewy.obracaj_wirL(Obrot);
-Prawy.obracaj_wirP(Obrot,RuszPrawy);
   }
 
 void Dron::ani_obroc_Z(double kat){
@@ -83,7 +80,7 @@ for(int i=0;i<kat;++i){
 
 obroc_Z(1);
 rysujdrona();
-
+usleep(10000);
 }
 
 }
@@ -91,35 +88,42 @@ rysujdrona();
 
 void Dron::plyn1(Wektor3D Wek){
 
- PozycjaSr = PozycjaSr +Wek;
-
-Lewy.rusz(Wek);
-Prawy.rusz(Wek);
+PozycjaSr = PozycjaSr + Wek;
 
 }
 
+void Dron::plyn(double dlugosc, double kat){
 
+kat=kat*Pi/180;
+double kat_or=Orientacja.getkat()*Pi/180;
 
-void Dron::ani_plyn(Wektor3D Wek){
+Wektor3D P;
+P[0]=cos(kat)*cos(kat_or);
+P[1]=cos(kat)*sin(kat_or);
+P[2]=sin(kat);
 
+PozycjaSr=PozycjaSr+P*dlugosc;
+
+}
+
+void Dron::ani_plyn(double dlugosc, double kat){
 
 for(int i=0;i<100;i++){
-
-plyn1(Wek/100);
+plyn(dlugosc/100, kat);
 rysujdrona();
+usleep(10000);
 /*
 if(i+1<dlugosc){
 api->erase_shape(id);
 }
 */
-
 }
 
 }
 
 void Dron::rysujdrona(){
 
-rysuj();
+Prostopadloscian::rysuj();
 Lewy.rysuj();
 Prawy.rysuj();
 

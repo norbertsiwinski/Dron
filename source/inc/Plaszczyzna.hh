@@ -11,7 +11,7 @@ public:
 string kolor; 
 
 Plaszczyzna(){};
-int rysuj() override;
+void rysuj() override;
 
 };
 

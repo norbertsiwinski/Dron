@@ -5,12 +5,10 @@
 
 
 class Woda : public Plaszczyzna{
-public:
 
 
-Woda(){};
+Woda(){PozycjaSr={0,0,100};};
 
-int rysuj()override;
 
 };
 

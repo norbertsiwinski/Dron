@@ -2,7 +2,7 @@
 
 
 
-int Plaszczyzna::rysuj(){
+void Plaszczyzna::rysuj(){
 
 Wektor3D tab[25];
 
@@ -19,6 +19,6 @@ api->draw_surface(vector<vector<Point3D> > {{
     drawNS::Point3D(tab[18][0],tab[18][1],tab[18][2]), drawNS::Point3D(tab[19][0],tab[19][1],tab[19][2]), drawNS::Point3D(tab[20][0],tab[20][1],tab[20][2])
       },{
 
-}},kolor);
+}},"black");
 
 }

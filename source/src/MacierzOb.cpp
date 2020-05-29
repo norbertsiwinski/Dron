@@ -15,6 +15,8 @@ tab[2][2]=1;
 
 MacierzOb::MacierzOb(double kat, char os)
 {  
+this->kat=kat;
+
 kat=kat*Pi/180;
 
 tab[0][0]=1;       

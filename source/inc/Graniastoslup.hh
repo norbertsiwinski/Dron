@@ -13,7 +13,7 @@ double h;
 Graniastoslup(){};
 Graniastoslup(double A, double H);
 
-int rysuj() override;
+void rysuj() override;
 
 void wspolrzedne_gl(Wektor3D tab[]) const;
 void pozycja(const Wektor3D &W);

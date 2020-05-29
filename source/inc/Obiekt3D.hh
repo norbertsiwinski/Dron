@@ -5,6 +5,7 @@
 #include "Wektor.hh"
 #include "Dr3D_gnuplot_api.hh"
 #include "MacierzOb.hh"
+#include <unistd.h>
 #define Pi 3.14
 
 using std::vector;
@@ -21,11 +22,12 @@ MacierzOb Orientacja;
 
 std::shared_ptr<drawNS::Draw3DAPI> api;
 
-int id;
+int id=-1;
 
 
 public:
-virtual int rysuj()= 0;
+
+virtual void rysuj()= 0;
 /* virtual int zmaz() =0; */
 void pozycja(const Wektor3D &W);
 void orientacja(const MacierzOb &M);

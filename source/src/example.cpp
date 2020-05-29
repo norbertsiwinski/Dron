@@ -12,7 +12,6 @@
 
 
 
-
 using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
@@ -32,70 +31,61 @@ int main() {
  
 api->change_ref_time_ms(0);
 Dron D(27,20,15);
+D.setapi(api);
+D.rysujdrona();
 
-Wektor3D W(40,0,45);
 /*
 Dno Dt;
 Dt.rysuj();
+
 */
-
-
-D.setapi(api);
-
-D.rysujdrona();
-wait4key();
-// D.ani_plyn(W);
-wait4key();
-
-wait4key();
-D.ani_plyn(W);
-wait4key();
-D.ani_obroc_Z(50);
-
-
-wait4key();
-
-
-
-
-
-
-/*
-
 int i=0;
-int kat;
-int odlegosc;
+int dlugosc, kat;
+
 while(i!=3){
 
-cout<<" Menu: "<<endl;
-cout<<"1 - zadaj ruch na wprost"<<endl;
-cout<<"2 - zadaj zmiane orientacji"<<endl;
-cout <<"3 - zakoncz dzialanie"<<endl;
-
+cout<<"Menu uzytkownika, wybierz opcje:"<<endl;
+cout<<"1. Zadaj ruch na wprost"<<endl;
+cout<<"2. Obroc o kat"<<endl;
+cout<<"3. Zakoncz dzialanie programu"<<endl;
+cout<<"Wybieram:";
 cin>>i;
+cout<<endl;
+switch(i){
 
-if(i==1)
-
-cout<<"Podaj kat";
-cin >> kat;
-cout<<"Podaj odlegosc";
-cin >> odlegosc;
-D.ani_plyn(kat,odlegosc);
-wait4key();
+case 1:
+{
+cout<<"Podaj na jaka dlugosc chcesz poplynac:";
+cin>>dlugosc;
+cout<<"Podaj kat pod jakim chcesz poplynac:";
+cin>>kat;
+cout<<endl;
+D.ani_plyn(dlugosc,kat);
+break;
 }
-if(i==2){
 
-cout<<"Podaj kat";
-cin >> kat;
+case 2:
+{
+cout<<"Podaj kat o jaki chcesz obrocic drona:";
+cin>>kat;
 D.ani_obroc_Z(kat);
-wait4key();
+cout<<endl;
+break;
 }
-if(i==3){
+case 3:
+{
+ exit(1);
+  break;
+}
+default:
+cout<<"Niepoprawna opcja, wybierz ponownie"<<endl;
+cout<<endl;
+break;
 
-exit(1);
+}
 }
 
-*/
+
 }
 
 
