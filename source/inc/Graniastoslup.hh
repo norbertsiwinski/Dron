@@ -16,15 +16,10 @@ Graniastoslup(double A, double H);
 void rysuj() override;
 
 void wspolrzedne_gl(Wektor3D tab[]) const;
-void pozycja(const Wektor3D &W);
+
 void getwym(double a,double h);
-void obracaj_wirL(MacierzOb Obrot);
-void obracaj_wirP(MacierzOb Obrot, Wektor3D W);
-void rusz(Wektor3D Wek);
 
 };
-
-
 
 
 #endif

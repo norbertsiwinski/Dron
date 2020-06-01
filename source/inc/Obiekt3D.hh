@@ -29,8 +29,10 @@ public:
 
 virtual void rysuj()= 0;
 /* virtual int zmaz() =0; */
-void pozycja(const Wektor3D &W);
-void orientacja(const MacierzOb &M);
+Wektor3D getsrodek(){return PozycjaSr;};
+void pozycja(const Wektor3D &W){PozycjaSr=W;};
+MacierzOb getorientacja(){ return Orientacja;}
+void orientacja(const MacierzOb &M){Orientacja=M;};
 void setapi(std::shared_ptr<drawNS::Draw3DAPI> Api ) {api=Api;} 
 
 };

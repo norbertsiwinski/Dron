@@ -6,8 +6,9 @@
 
 class Woda : public Plaszczyzna{
 
+public:
 
-Woda(){PozycjaSr={0,0,100};};
+Woda(){PozycjaSr={0,0,100}; kolor="blue";};
 
 
 };
