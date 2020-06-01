@@ -6,7 +6,7 @@
 
 
 
-class PrzeszkodaProstopadloscian : public Prostopadloscian,public Przeszkoda{
+class PrzeszkodaProstopadloscian : public Prostopadloscian, public Przeszkoda{
 
 public:
 

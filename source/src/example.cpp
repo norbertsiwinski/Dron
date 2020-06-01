@@ -27,34 +27,35 @@ void wait4key() {
 
 int main() {
 
-
- std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,100));
+std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,100));
 api->change_ref_time_ms(0);
- std::vector<std::shared_ptr<InterfejsDrona>> KolekcjaDronow;
+
+std::shared_ptr<Dno> Dn= std::make_shared<Dno>();
+Dn->setapi(api);
+Dn->rysuj();
+
+std::shared_ptr<Woda> W= std::make_shared<Woda>();
+
+W->setapi(api);
+W->rysuj();
+std::vector<std::shared_ptr<InterfejsDrona>> KolekcjaDronow;
 
 std::shared_ptr<Dron> D1= std::make_shared<Dron>(15,15,10);
 std::shared_ptr<Dron> D= std::make_shared<Dron>(27,20,15);
 
+
 KolekcjaDronow.push_back(D1);
+KolekcjaDronow.push_back(D);
 
 //std::shared_ptr<PrzeszkodaProstopadloscian> P= std::make_shared<PrzeszkodaProstopadloscian>(32,20,20);
 
- Wektor3D W1(50,20,40); 
-  D1->pozycja(W1);
+Wektor3D W1(50,20,40); 
+D1->pozycja(W1);
+D1->setapi(api);
+D1->rysujdrona();
  
 D->setapi(api);
 D->rysujdrona();
-
-D1->setapi(api);
-D1->rysujdrona();
-
-Woda W;
-Dno Dno;
-W.setapi(api);
-Dno.setapi(api);
-Dno.rysuj();
-W.rysuj();
-
 
 int i=0;
 int dlugosc, kat;

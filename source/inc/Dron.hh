@@ -23,8 +23,6 @@ Graniastoslup Prawy;
 Wektor3D RuszPrawy;
 
 
-
-
 Dron(double A, double B, double C);
 void obroc_X(double kat) override;
 void obroc_Y(double kat) override;

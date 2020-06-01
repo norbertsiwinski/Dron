@@ -8,7 +8,6 @@ class MacierzOb : public Macierz<double,3> {
 
 public:
 
-double kat;
 
 MacierzOb();
 
@@ -32,7 +31,7 @@ exit(1);
 
 MacierzOb(double kat, char os);
 
-double getkat(){ return this->kat;};
+
 };
 
 

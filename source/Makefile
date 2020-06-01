@@ -15,8 +15,6 @@ obj/Dr3D_gnuplot_api.o: src/Dr3D_gnuplot_api.cpp inc/Dr3D_gnuplot_api.hh
 obj/Dron.o: src/Dron.cpp inc/Dron.hh 
 	g++ ${CPPFLAGS} -o obj/Dron.o src/Dron.cpp
 
-inc/Dron.hh: inc/InterfejsDrona.hh
-	touch inc/Dron.hh
 
 obj/Plaszczyzna.o: src/Plaszczyzna.cpp inc/Plaszczyzna.hh
 	g++ ${CPPFLAGS} -o obj/Plaszczyzna.o src/Plaszczyzna.cpp
@@ -36,17 +34,11 @@ obj/Graniastoslup.o: src/Graniastoslup.cpp inc/Graniastoslup.hh
 inc/Graniostoslup.hh: inc/Obiekt3D.hh	
 	touch inc/Graniostoslup.hh
 
-obj/Dno.o: src/Dno.cpp inc/Dno.hh
+obj/Dno.o: src/Dno.cpp inc/Dno.hh inc/Plaszczyzna.hh inc/Obiekt3D.hh
 	g++ ${CPPFLAGS} -o obj/Dno.o src/Dno.cpp
 
-inc/Dno.hh: inc/Plaszczyzna.hh	
-	touch inc/Dno.hh
-
-obj/Woda.o: src/Woda.cpp inc/Woda.hh
+obj/Woda.o: src/Woda.cpp inc/Woda.hh inc/Plaszczyzna.hh inc/Obiekt3D.hh
 	g++ ${CPPFLAGS} -o obj/Woda.o src/Woda.cpp	
-
-inc/Woda.hh: inc/Plaszczyzna.hh	
-	touch inc/Woda.hh
 
 obj/MacierzOb.o:inc/Macierz.hh src/MacierzOb.cpp inc/MacierzOb.hh
 	g++ ${CPPFLAGS} -o obj/MacierzOb.o src/MacierzOb.cpp
@@ -59,6 +51,7 @@ obj/Prostopadloscian.o: src/Prostopadloscian.cpp inc/Prostopadloscian.hh
 
 inc/Prostopadloscian.hh: inc/Obiekt3D.hh
 	touch inc/Prostopadloscian.hh
+	
 
 
 clear:

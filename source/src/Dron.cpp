@@ -95,17 +95,14 @@ void Dron::plyn(double dlugosc, double kat){
 
 
 kat=kat*Pi/180;
-double kat_or=Orientacja.getkat()*Pi/180;
 
 Wektor3D P;
 
-
-P[0]=cos(kat)*cos(kat_or);
-P[1]=cos(kat)*sin(kat_or);
+P[0]=cos(kat)*cos(kat);
+P[1]=cos(kat)*sin(kat);
 P[2]=sin(kat);
 
-PozycjaSr=PozycjaSr+P*dlugosc;
-
+PozycjaSr=PozycjaSr+Orientacja*P*dlugosc;
 
 
 }
