@@ -33,19 +33,19 @@ Wektor3D OrZ=Orientacja*przesuniecie_z;
 Wektor3D OrX2=Orientacja*przesuniecie_x2;
 
 tab[0] = PozycjaSr+ Orientacja *srodek_gran-OrX-OrX2-OrZ;
-tab[1] =PozycjaSr + Orientacja * srodek_gran + OrY2 -OrX-OrX2;
-tab[2] =PozycjaSr + Orientacja *srodek_gran + OrY +OrY2 -OrX-OrX2;
-tab[3] =PozycjaSr + Orientacja *srodek_gran + OrY + OrY-OrX-OrX2-OrZ;
-tab[4] =PozycjaSr + Orientacja * srodek_gran + OrY+OrY2 -OrX-OrX2-OrZ-OrZ;
-tab[5] =PozycjaSr + Orientacja *srodek_gran +OrY2 -OrX-OrX2-OrZ -OrZ;
-tab[6] =PozycjaSr + Orientacja *srodek_gran - OrX -OrX-OrX2-OrZ;
-tab[7] =PozycjaSr + Orientacja *srodek_gran + OrY2 - OrX-OrX-OrX2;
-tab[8] =PozycjaSr + Orientacja *srodek_gran  + OrY +OrY2 -OrX-OrX-OrX2;
-tab[9] =PozycjaSr + Orientacja *srodek_gran + OrY + OrY -OrX-OrX-OrX2-OrZ;
-tab[10] =PozycjaSr + Orientacja *srodek_gran + OrY+ OrY2 -OrX-OrX-OrX2-OrZ-OrZ;
-tab[11] =PozycjaSr + Orientacja *srodek_gran +OrY2-OrX-OrX-OrX2-OrZ- OrZ;
-}
+tab[1] = PozycjaSr + Orientacja * srodek_gran + OrY2 -OrX-OrX2;
+tab[2] = PozycjaSr + Orientacja *srodek_gran + OrY +OrY2 -OrX-OrX2;
+tab[3] = PozycjaSr + Orientacja *srodek_gran + OrY + OrY-OrX-OrX2-OrZ;
+tab[4] = PozycjaSr + Orientacja * srodek_gran + OrY+OrY2 -OrX-OrX2-OrZ-OrZ;
+tab[5] = PozycjaSr + Orientacja *srodek_gran +OrY2 -OrX-OrX2-OrZ -OrZ;
+tab[6] = PozycjaSr + Orientacja *srodek_gran - OrX -OrX-OrX2-OrZ;
+tab[7] = PozycjaSr + Orientacja *srodek_gran + OrY2 - OrX-OrX-OrX2;
+tab[8] = PozycjaSr + Orientacja *srodek_gran  + OrY +OrY2 -OrX-OrX-OrX2;
+tab[9] = PozycjaSr + Orientacja *srodek_gran + OrY + OrY -OrX-OrX-OrX2-OrZ;
+tab[10] = PozycjaSr + Orientacja *srodek_gran + OrY + OrY2 -OrX-OrX-OrX2-OrZ-OrZ;
+tab[11] = PozycjaSr + Orientacja *srodek_gran + OrY2 -OrX-OrX-OrX2-OrZ-OrZ;
 
+}
 
 void Graniastoslup::rysuj() 
 {
@@ -59,7 +59,7 @@ id = api->draw_polyhedron(vector<vector<Point3D> > {{
       },{
        drawNS::Point3D(tab[6][0],tab[6][1],tab[6][2]), drawNS::Point3D(tab[7][0],tab[7][1],tab[7][2]), drawNS::Point3D(tab[8][0],tab[8][1],tab[8][2]),
     drawNS::Point3D(tab[9][0],tab[9][1],tab[9][2]), drawNS::Point3D(tab[10][0],tab[10][1],tab[10][2]), drawNS::Point3D(tab[11][0],tab[11][1],tab[11][2])
-	  }},"green");
+	  }},"purple");
     
 
 }
@@ -71,30 +71,11 @@ h=H;
 
 }
 
+/*
 void Graniastoslup::pozycja(const Wektor3D &W){
 
 PozycjaSr=W;
 
 }
+*/
 
-
-void Graniastoslup::obracaj_wirL(MacierzOb Obrot){
-
-Orientacja=Orientacja*Obrot;
-
-
-}
-
-void Graniastoslup::obracaj_wirP(MacierzOb Obrot, Wektor3D W){
-
-Orientacja=Orientacja*Obrot;
-PozycjaSr=PozycjaSr+W;
-
-
-}
-void Graniastoslup::rusz(Wektor3D Wek){
-
-
- PozycjaSr = PozycjaSr +Wek;
-
-}

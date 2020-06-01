@@ -12,7 +12,6 @@ z=Z;
 Lewy.getwym(X/8,Y/2);
 Prawy.getwym(X/8,Y/2);
 
-
 Wektor3D Przesun_prawo(0,-Y/1.8,0);
 
 Prawy.pozycja(Przesun_prawo);
@@ -69,8 +68,11 @@ rysuj();
 
 void Dron::obroc_Z(double kat)
      {
-MacierzOb Obrot(kat,'z');
-Orientacja=Orientacja*Obrot;
+
+MacierzOb Ob(kat,'z');
+
+Orientacja=Orientacja*Ob;
+
 
   }
 
@@ -80,38 +82,41 @@ for(int i=0;i<kat;++i){
 
 obroc_Z(1);
 rysujdrona();
-usleep(10000);
+usleep(1000);
+
+
 }
 
 }
 
 
-void Dron::plyn1(Wektor3D Wek){
-
-PozycjaSr = PozycjaSr + Wek;
-
-}
 
 void Dron::plyn(double dlugosc, double kat){
+
 
 kat=kat*Pi/180;
 double kat_or=Orientacja.getkat()*Pi/180;
 
 Wektor3D P;
+
+
 P[0]=cos(kat)*cos(kat_or);
 P[1]=cos(kat)*sin(kat_or);
 P[2]=sin(kat);
 
 PozycjaSr=PozycjaSr+P*dlugosc;
 
+
+
 }
 
 void Dron::ani_plyn(double dlugosc, double kat){
 
+
 for(int i=0;i<100;i++){
 plyn(dlugosc/100, kat);
 rysujdrona();
-usleep(10000);
+usleep(1000);
 /*
 if(i+1<dlugosc){
 api->erase_shape(id);
@@ -120,16 +125,44 @@ api->erase_shape(id);
 }
 
 }
+void Dron::odswiez(){
 
-void Dron::rysujdrona(){
+Prostopadloscian::pozycja(PozycjaSr);
+Prostopadloscian::orientacja(Orientacja);
+}
 
-Prostopadloscian::rysuj();
-Lewy.rysuj();
-Prawy.rysuj();
+void Dron::odswiez_prawy(){
+
+
+Prawy.pozycja(PozycjaSr+Orientacja*RuszPrawy);
+Prawy.orientacja(Orientacja);
 
 }
 
+void Dron::odswiez_lewy(){
 
+
+Lewy.pozycja(PozycjaSr);
+Lewy.orientacja(Orientacja);
+
+}
+
+void Dron::rysujdrona(){
+
+// odswiez(); //
+odswiez_prawy();
+odswiez_lewy();
+Prostopadloscian::rysuj();
+Prawy.rysuj();
+Lewy.rysuj();
+
+}
+
+bool Dron::czy_kolizja(std::shared_ptr<InterfejsDrona> D){
+
+ ///if(D->getsrodek()////
+
+} 
 
 
 

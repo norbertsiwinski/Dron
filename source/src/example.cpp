@@ -9,14 +9,15 @@
 #include "Dno.hh"
 #include "Woda.hh"
 #include "Plaszczyzna.hh"
-
-
+#include "InterfejsDrona.hh"
+#include "PrzeszkodaProstopadloscian.hh"
 
 using std::vector;
 using drawNS::Point3D;
 using drawNS::APIGnuPlot3D;
 using std::cout;
 using std::endl;
+using std::shared_ptr;
 
 void wait4key() {
   do {
@@ -28,17 +29,33 @@ int main() {
 
 
  std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,100));
- 
 api->change_ref_time_ms(0);
-Dron D(27,20,15);
-D.setapi(api);
-D.rysujdrona();
+ std::vector<std::shared_ptr<InterfejsDrona>> KolekcjaDronow;
 
-/*
-Dno Dt;
-Dt.rysuj();
+std::shared_ptr<Dron> D1= std::make_shared<Dron>(15,15,10);
+std::shared_ptr<Dron> D= std::make_shared<Dron>(27,20,15);
 
-*/
+KolekcjaDronow.push_back(D1);
+
+//std::shared_ptr<PrzeszkodaProstopadloscian> P= std::make_shared<PrzeszkodaProstopadloscian>(32,20,20);
+
+ Wektor3D W1(50,20,40); 
+  D1->pozycja(W1);
+ 
+D->setapi(api);
+D->rysujdrona();
+
+D1->setapi(api);
+D1->rysujdrona();
+
+Woda W;
+Dno Dno;
+W.setapi(api);
+Dno.setapi(api);
+Dno.rysuj();
+W.rysuj();
+
+
 int i=0;
 int dlugosc, kat;
 
@@ -60,7 +77,7 @@ cin>>dlugosc;
 cout<<"Podaj kat pod jakim chcesz poplynac:";
 cin>>kat;
 cout<<endl;
-D.ani_plyn(dlugosc,kat);
+D->ani_plyn(dlugosc,kat);
 break;
 }
 
@@ -68,7 +85,7 @@ case 2:
 {
 cout<<"Podaj kat o jaki chcesz obrocic drona:";
 cin>>kat;
-D.ani_obroc_Z(kat);
+D->ani_obroc_Z(kat);
 cout<<endl;
 break;
 }

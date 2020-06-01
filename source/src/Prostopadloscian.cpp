@@ -57,7 +57,7 @@ id=api->draw_polyhedron (vector<vector<Point3D>>{{
     {
 
         drawNS::Point3D(punkt[4][0],punkt[4][1],punkt[4][2]), drawNS::Point3D(punkt[5][0],punkt[5][1],punkt[5][2]),drawNS::Point3D(punkt[6][0],punkt[6][1],punkt[6][2]),drawNS::Point3D(punkt[7][0],punkt[7][1],punkt[7][2])
-    }},"blue");
+    }},"red");
 
 }
 /*
