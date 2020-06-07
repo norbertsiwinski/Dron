@@ -24,7 +24,6 @@ std::shared_ptr<drawNS::Draw3DAPI> api;
 
 int id=-1;
 
-
 public:
 
 virtual void rysuj()= 0;
