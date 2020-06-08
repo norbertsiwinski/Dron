@@ -15,13 +15,13 @@
 class Dron : public Prostopadloscian, public InterfejsDrona ,public Przeszkoda  
 {
 
-public:
+protected:
 
 Graniastoslup Lewy;
 Graniastoslup Prawy;
-
 Wektor3D RuszPrawy;
 
+public:
 
 Dron(double A, double B, double C);
 
@@ -41,6 +41,8 @@ void odswiez_lewy()override;
  bool czy_kolizja(std::shared_ptr<InterfejsDrona> D)override;
  Wektor3D getsrodek(){return PozycjaSr;};
 
+double getbok(){return x;};
+double getwys(){return z;};
 
 };
 

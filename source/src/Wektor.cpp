@@ -191,6 +191,18 @@ cout<<endl;
 return strm;
 
  }
+
+template<class TYP, int Rozmiar>
+double Wektor<TYP,Rozmiar>::dlugosc(){
+
+double dlug=0;
+
+for(int i=0; i<Rozmiar;i++)
+dlug=(dlug+tab[i]*tab[i]);
+dlug=sqrt(dlug);
+
+return dlug;
+ }
 /*
  template <> bool Wektor<LZespolona,5>::operator==(const Wektor<LZespolona,5> &W2)const{
 

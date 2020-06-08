@@ -43,19 +43,19 @@ Orientacja=Orientacja*Ob;
 void Dron::ani_obroc_Z(double kat){
 
 if(kat>0){
-  cout<<"jestem";
+ 
 for(int i=0;i<kat;++i){
 
 obroc_Z(1);
 rysujdrona();
-usleep(1000);
+
 }
 }
 if(kat<0){
 for(int i=0;i>kat;--i){
 obroc_Z(-1);
 rysujdrona();
-usleep(1000);
+
 }
 }
 
@@ -80,11 +80,9 @@ PozycjaSr=PozycjaSr+Orientacja*P*dlugosc;
 
 void Dron::ani_plyn(double dlugosc, double kat){
 
-
-
 plyn(dlugosc, kat);
 rysujdrona();
-usleep(1000);
+
 
 /*
 if(i+1<dlugosc){
@@ -109,6 +107,7 @@ void Dron::odswiez_lewy(){
 Lewy.pozycja(PozycjaSr);
 Lewy.orientacja(Orientacja);
 
+
 }
 
 void Dron::rysujdrona(){
@@ -123,7 +122,17 @@ Lewy.rysuj();
 
 bool Dron::czy_kolizja(std::shared_ptr<InterfejsDrona> D){
 
- return false;
+double promien1= D->getbok()/2;
+double promien2= this->getbok()/2;
+Wektor3D odl= D->getsrodek()-this->getsrodek();
+
+if(D->getsrodek()==PozycjaSr)
+return false;
+
+if(promien1+promien2>odl.dlugosc())
+ return true;
+
+else return false;
 
 } 
 

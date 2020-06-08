@@ -30,6 +30,7 @@ int main() {
 std::shared_ptr<drawNS::Draw3DAPI> api(new APIGnuPlot3D(-100,100,-100,100,-100,100,100));
 api->change_ref_time_ms(0);
 
+
 std::vector<std::shared_ptr<InterfejsDrona>> KolekcjaDronow;
 std::vector<std::shared_ptr<Przeszkoda>> KolekcjaPrzeszkod;
 
@@ -58,23 +59,28 @@ P1->pozycja(W2);
 P1->setapi(api);
 P1->rysuj();
 
-KolekcjaDronow.push_back(D1);
 KolekcjaDronow.push_back(D);
+KolekcjaDronow.push_back(D1);
+
 KolekcjaPrzeszkod.push_back(P1);
 KolekcjaPrzeszkod.push_back(Dn);
 KolekcjaPrzeszkod.push_back(W);
-
+KolekcjaPrzeszkod.push_back(D);
+KolekcjaPrzeszkod.push_back(D1);
 
 int i=0;
-int dlugosc, kat;
+int dlugosc, kat, numer;
 
+cout<<"Podaj numer drona do sterowania, DUZY -> 1, MALY -> 2: ";
+cin>>numer;
+cout<< endl;
 while(i!=3){
 
 cout<<"Menu uzytkownika, wybierz opcje:"<<endl;
 cout<<"1. Zadaj ruch na wprost"<<endl;
 cout<<"2. Obroc o kat"<<endl;
 cout<<"3. Zakoncz dzialanie programu"<<endl;
-cout<<"4. wybierz drona:"<<endl;
+cout<<"4. Zmien drona:"<<endl;
 cout<<"Wybieram:";
 cin>>i;
 cout<<endl;
@@ -82,9 +88,9 @@ switch(i){
 
 case 1:
 {
-cout<<"Podaj na jaka dlugosc chcesz poplynac:";
+cout<<"Podaj dlugosc na jaka chcesz poplynac: ";
 cin>>dlugosc;
-cout<<"Podaj kat pod jakim chcesz poplynac:";
+cout<<"Podaj kat pod jakim chcesz poplynac: ";
 cin>>kat;
 cout<<endl;
 
@@ -95,25 +101,22 @@ for(int j=0; j<=dlugosc; j++){
 for(auto elem: KolekcjaPrzeszkod){
 
 flag=elem->czy_kolizja(D);
+// flag=elem->czy_kolizja(KolekcjaDronow[numer]);
 
 if(flag==true){
-
+  KolekcjaDronow[numer-1]->ani_plyn(-1,kat);
  break;
   }
-
 }
 if(flag==false){
-
-D->ani_plyn(1,kat);
+KolekcjaDronow[numer-1]->ani_plyn(1,kat);
 }
 
 else {
-  cout<<"Wykryto mozliwosc kolizji!"; 
-  cin.clear();
-  cin.ignore(1000,'\n');
+  cout<<"Wykryto mozliwosc kolizji!"<<endl;
+ cout<<endl;
   break;
 }
-
 }
 break;
 }
@@ -122,7 +125,7 @@ case 2:
 {
 cout<<"Podaj kat o jaki chcesz obrocic drona:";
 cin>>kat;
-D->ani_obroc_Z(kat);
+KolekcjaDronow[numer-1]->ani_obroc_Z(kat);
 cout<<endl;
 break;
 }
@@ -133,19 +136,22 @@ case 3:
 }
 case 4:
 {
+  cout<<"Podaj numer drona do sterowania, DUZY -> 1, MALY -> 2: ";
+  cin>>numer;
 
-D=D1;
+ KolekcjaDronow[numer-1];
 
+ break;
 }
 
 default:
+
 cout<<"Niepoprawna opcja, wybierz ponownie"<<endl;
 cout<<endl;
 break;
 
 }
 }
-
 
 }
 

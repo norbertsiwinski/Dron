@@ -41,6 +41,8 @@ TYP & operator [] (int index);
 TYP Abs()const;
 Wektor<TYP,Rozmiar> operator/ (TYP l2) const; 
 
+double dlugosc();
+
   bool operator==(const Wektor<TYP, Rozmiar> & W2)const;
   bool operator!=(const Wektor<TYP, Rozmiar> & W2)const;
 

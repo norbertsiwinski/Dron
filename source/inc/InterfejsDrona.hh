@@ -21,6 +21,9 @@ virtual void odswiez_prawy()=0;
 virtual void odswiez_lewy()=0;
 
 virtual Wektor3D getsrodek()=0;
+
+virtual double getbok()=0;
+virtual double getwys()=0;
 };
 
 #endif

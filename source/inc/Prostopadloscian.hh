@@ -5,10 +5,11 @@
 
 class Prostopadloscian: public Obiekt3D{
 
-public:
+protected:
 
 double x,y,z;
 
+public:
 
 Prostopadloscian(){};
 Prostopadloscian(double _x, double _y, double _z);

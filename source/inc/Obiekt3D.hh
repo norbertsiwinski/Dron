@@ -24,6 +24,10 @@ std::shared_ptr<drawNS::Draw3DAPI> api;
 
 int id=-1;
 
+static int ile_istnieje;
+static int ile_utworzono;
+
+
 public:
 
 virtual void rysuj()= 0;
